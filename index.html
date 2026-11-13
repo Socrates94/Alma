@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Belen, perdoname, quieres ser mi novia? 💖</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --rosa-1: #ff5f9e;
+      --rosa-2: #ff2d6f;
+      --texto: #7a2148;
+    }
+
+    html, body, #root { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+      background: radial-gradient(circle at 15% 15%, #fff0f6 0%, #ffd9e8 40%, #ffc2da 70%, #ffb3d1 100%);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    .escena {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .tarjeta {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 560px;
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(224, 53, 111, 0.25);
+      animation: aparecer 0.6s ease both;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(24px) scale(0.96); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .emoji-grande {
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      animation: latir 1.6s ease-in-out infinite;
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.12); }
+    }
+
+    .titulo {
+      font-weight: 800;
+      font-size: clamp(1.55rem, 5vw, 2.3rem);
+      color: #c22a5f;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitulo {
+      color: #a3446a;
+      font-size: 1.02rem;
+      min-height: 1.6em;
+      margin-bottom: 0;
+    }
+
+    .contador {
+      margin: 1.25rem 0 0;
+      font-size: 0.85rem;
+      color: #b0648a;
+    }
+
+    .btn-si {
+      background: linear-gradient(135deg, var(--rosa-1), var(--rosa-2));
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.75em 2em;
+      font-weight: 700;
+      white-space: nowrap;
+      user-select: none;
+      box-shadow: 0 10px 24px rgba(255, 45, 111, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, font-size 0.25s ease;
+    }
+    .btn-si:hover {
+      color: #fff;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 14px 32px rgba(255, 45, 111, 0.5);
+    }
+
+    .btn-no {
+      background: #fff;
+      color: #6b7280;
+      border: 2px solid #ececf1;
+      border-radius: 999px;
+      padding: 0.7em 1.8em;
+      font-weight: 600;
+      white-space: nowrap;
+      user-select: none;
+      touch-action: manipulation;
+      transition: top 0.2s ease-out, left 0.2s ease-out;
+    }
+    .btn-no:focus { outline: none; box-shadow: none; }
+
+    .corazones {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .corazones span {
+      position: absolute;
+      bottom: -12vh;
+      opacity: 0;
+      animation-name: flotar;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes flotar {
+      0%   { transform: translateY(0) scale(0.8) rotate(0deg);      opacity: 0; }
+      10%  {                                                        opacity: 0.85; }
+      90%  {                                                        opacity: 0.6; }
+      100% { transform: translateY(-118vh) scale(1.15) rotate(25deg); opacity: 0; }
+    }
+
+    .lista-cita {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 340px;
+      text-align: left;
+    }
+    .lista-cita li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      padding: 0.55rem 0.85rem;
+      margin-bottom: 0.5rem;
+      background: rgba(255, 240, 246, 0.95);
+      border-radius: 14px;
+      font-size: 0.97rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <!-- Placeholder que React reemplaza al montar -->
+    <div style="min-height:100dvh; display:flex; align-items:center; justify-content:center; font-family:system-ui, sans-serif; color:#a3446a;">
+      Cargando 💖...
+    </div>
+  </div>
+
+  <!-- React 18 UMD (versión fija, garantizada con UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <!-- Babel standalone 7.x (fijado a la rama 7) -->
+  <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js"></script>
+
+  <script type="text/babel" data-presets="react">
+    const { useState, useRef, useEffect, useCallback, useMemo } = React;
+
+    const FRASES = [
+      "Intenta otra vez 😏",
+      "Uy, casi 😅",
+      "Ese botón es muy escurridizo...",
+      "¿En serio quieres decirme que no? 🥺",
+      "El universo no quiere que lo presiones",
+      "Ríndete, el botón de Sí es más bonito 💖",
+      "Mi corazón no acepta un 'no'",
+      "Llevas muchos intentos, ¿eh? 😌",
+    ];
+
+    function Corazones({ cantidad = 16, rapido = false }) {
+      const items = useMemo(
+        () =>
+          Array.from({ length: cantidad }, (_, i) => ({
+            id: i,
+            left: Math.random() * 100,
+            delay: Math.random() * (rapido ? 5 : 10),
+            dur: (rapido ? 5 : 9) + Math.random() * 6,
+            size: 12 + Math.random() * 26,
+            emoji: ["💖", "💕", "💗", "❤️", "🌸", "💞"][Math.floor(Math.random() * 6)],
+          })),
+        [cantidad, rapido]
+      );
+
+      return (
+        <div className="corazones" aria-hidden="true">
+          {items.map((c) => (
+            <span
+              key={c.id}
+              style={{
+                left: c.left + "%",
+                animationDelay: c.delay + "s",
+                animationDuration: c.dur + "s",
+                fontSize: c.size + "px",
+              }}
+            >
+              {c.emoji}
+            </span>
+          ))}
+        </div>
+      );
+    }
+
+    function App() {
+      const [acepto, setAcepto] = useState(false);
+      const [noPos, setNoPos] = useState(null);
+      const [esquivas, setEsquivas] = useState(0);
+      const noRef = useRef(null);
+
+      const moverBotonNo = useCallback((cursor) => {
+        const btn = noRef.current;
+        const w = btn ? btn.offsetWidth : 130;
+        const h = btn ? btn.offsetHeight : 50;
+        const m = 16;
+        const maxX = Math.max(m, window.innerWidth - w - m);
+        const maxY = Math.max(m, window.innerHeight - h - m);
+
+        if (!cursor) {
+          setNoPos({
+            left: m + Math.random() * (maxX - m),
+            top: m + Math.random() * (maxY - m),
+          });
+          setEsquivas((n) => n + 1);
+          return;
+        }
+
+        const actual = btn.getBoundingClientRect();
+        const centroX = actual.left + w / 2;
+        const centroY = actual.top + h / 2;
+        const distanciaX = centroX - cursor.x || (Math.random() - 0.5);
+        const distanciaY = centroY - cursor.y || (Math.random() - 0.5);
+        const distancia = Math.hypot(distanciaX, distanciaY) || 1;
+        const paso = 180;
+        const destino = {
+          left: Math.min(maxX, Math.max(m, actual.left + (distanciaX / distancia) * paso)),
+          top: Math.min(maxY, Math.max(m, actual.top + (distanciaY / distancia) * paso)),
+        };
+
+        setNoPos(destino);
+        setEsquivas((n) => n + 1);
+      }, []);
+
+      useEffect(() => {
+        if (acepto) return;
+
+        const onMove = (e) => {
+          const btn = noRef.current;
+          if (!btn) return;
+          const r = btn.getBoundingClientRect();
+          const pad = 70;
+          const cerca =
+            e.clientX > r.left - pad &&
+            e.clientX < r.right + pad &&
+            e.clientY > r.top - pad &&
+            e.clientY < r.bottom + pad;
+          if (cerca) moverBotonNo({ x: e.clientX, y: e.clientY });
+        };
+
+        const onResize = () => {
+          setNoPos((p) => {
+            if (!p) return p;
+            const btn = noRef.current;
+            const w = btn ? btn.offsetWidth : 130;
+            const h = btn ? btn.offsetHeight : 50;
+            return {
+              left: Math.min(p.left, Math.max(16, window.innerWidth - w - 16)),
+              top: Math.min(p.top, Math.max(16, window.innerHeight - h - 16)),
+            };
+          });
+        };
+
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("resize", onResize);
+        return () => {
+          window.removeEventListener("mousemove", onMove);
+          window.removeEventListener("resize", onResize);
+        };
+      }, [acepto, moverBotonNo]);
+
+      if (acepto) {
+        return (
+          <div className="escena">
+            <Corazones cantidad={22} rapido />
+            <div className="tarjeta">
+              <div className="emoji-grande">💖</div>
+              <h1 className="titulo">¡Sabía que dirías que sí!</h1>
+              <p className="lead mb-4">
+                Entonces queda oficial: <strong>tenemos una cita</strong>.
+              </p>
+
+              <ul className="lista-cita">
+                <li><span>📅</span> El día que tú elijas</li>
+                <li><span>🕗</span> La hora que más te acomode</li>
+                <li><span>📍</span> Lugar: sorpresa (te va a gustar)</li>
+                <li><span>👗</span> Dress code: guapa, como siempre</li>
+              </ul>
+
+              <p className="mt-4 mb-3 fw-semibold">
+                Te paso a buscar. No acepto cancelaciones 😌
+              </p>
+
+            </div>
+          </div>
+        );
+      }
+
+      const frase =
+        esquivas === 0
+          ? "Tengo algo importante que preguntarte 👀"
+          : FRASES[(esquivas - 1) % FRASES.length];
+
+      const escalaSi = Math.min(1 + esquivas * 0.07, 1.7);
+
+      return (
+        <div className="escena">
+          <Corazones />
+          <div className="tarjeta">
+            <div className="emoji-grande">🌷</div>
+            <h1 className="titulo">Belen, perdoname, ¿Quieres ser mi novia?</h1>
+            <p className="subtitulo">{frase}</p>
+
+            <div className="d-flex justify-content-center align-items-center gap-3 flex-wrap mt-4">
+              <button
+                className="btn btn-si"
+                style={{ fontSize: escalaSi + "rem" }}
+                onClick={() => setAcepto(true)}
+              >
+                Sí 💖
+              </button>
+
+              <button
+                ref={noRef}
+                className="btn btn-no"
+                style={
+                  noPos
+                    ? { position: "fixed", top: noPos.top, left: noPos.left, margin: 0, zIndex: 60 }
+                    : undefined
+                }
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  moverBotonNo({ x: e.clientX, y: e.clientY });
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  moverBotonNo();
+                }}
+              >
+                No
+              </button>
+            </div>
+
+            {esquivas > 1 && (
+              <p className="contador">
+                El botón de "No" ya te esquivó {esquivas}{" "}
+                {esquivas === 1 ? "vez" : "veces"} 😌
+              </p>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
