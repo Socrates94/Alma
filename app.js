@@ -163,7 +163,7 @@
             <div className="cheems">
               <img src="cheems.avif" alt="Cheems esperando una respuesta" />
             </div>
-            <h1 className="titulo">Belen, ¿Quieres ser mi novia?</h1>
+            <h1 className="titulo">Belén, ¿Quieres ser mi novia?</h1>
             <p className="subtitulo">{frase}</p>
 
             <div className="d-flex justify-content-center align-items-center gap-3 flex-wrap mt-4">
