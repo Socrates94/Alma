@@ -1,0 +1,193 @@
+    :root {
+      --rosa-1: #ff5f9e;
+      --rosa-2: #ff2d6f;
+      --texto: #7a2148;
+    }
+
+    html, body, #root { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+      background: radial-gradient(circle at 15% 15%, #fff0f6 0%, #ffd9e8 40%, #ffc2da 70%, #ffb3d1 100%);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    .cargando {
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, sans-serif;
+      color: #a3446a;
+    }
+
+    .escena {
+      position: relative;
+      z-index: 1;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .tarjeta {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 560px;
+      padding: 2.5rem 1.75rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      box-shadow: 0 24px 60px rgba(224, 53, 111, 0.25);
+      animation: aparecer 0.6s ease both;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(24px) scale(0.96); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .emoji-grande {
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      animation: latir 1.6s ease-in-out infinite;
+    }
+
+    .cheems {
+      position: relative;
+      width: min(100%, 300px);
+      margin: 0 auto 1.25rem;
+      padding: 0.55rem;
+      border: 5px solid #fff;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ffe5ef, #fff8fb);
+      box-shadow: 0 14px 28px rgba(194, 42, 95, 0.2);
+      transform: rotate(-2deg);
+      animation: cheems-flota 3.8s ease-in-out infinite;
+    }
+    .cheems::after {
+      position: absolute;
+      top: -0.65rem;
+      right: 0.8rem;
+      content: "💖";
+      font-size: 1.55rem;
+      animation: latir 1.6s ease-in-out infinite;
+    }
+    .cheems img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 22px;
+      object-fit: cover;
+    }
+
+    @keyframes cheems-flota {
+      0%, 100% { transform: rotate(-2deg) translateY(0); }
+      50%      { transform: rotate(2deg) translateY(-8px); }
+    }
+
+    @keyframes latir {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.12); }
+    }
+
+    .titulo {
+      font-weight: 800;
+      font-size: clamp(1.55rem, 5vw, 2.3rem);
+      color: #c22a5f;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitulo {
+      color: #a3446a;
+      font-size: 1.02rem;
+      min-height: 1.6em;
+      margin-bottom: 0;
+    }
+
+    .contador {
+      margin: 1.25rem 0 0;
+      font-size: 0.85rem;
+      color: #b0648a;
+    }
+
+    .btn-si {
+      background: linear-gradient(135deg, var(--rosa-1), var(--rosa-2));
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.75em 2em;
+      font-weight: 700;
+      white-space: nowrap;
+      user-select: none;
+      box-shadow: 0 10px 24px rgba(255, 45, 111, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, font-size 0.25s ease;
+    }
+    .btn-si:hover {
+      color: #fff;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 14px 32px rgba(255, 45, 111, 0.5);
+    }
+
+    .btn-no {
+      background: #fff;
+      color: #6b7280;
+      border: 2px solid #ececf1;
+      border-radius: 999px;
+      padding: 0.7em 1.8em;
+      font-weight: 600;
+      white-space: nowrap;
+      user-select: none;
+      touch-action: manipulation;
+      transition: top 0.2s ease-out, left 0.2s ease-out;
+    }
+    .btn-no:focus { outline: none; box-shadow: none; }
+
+    .corazones {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .corazones span {
+      position: absolute;
+      bottom: -12vh;
+      opacity: 0;
+      animation-name: flotar;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes flotar {
+      0%   { transform: translateY(0) scale(0.8) rotate(0deg);      opacity: 0; }
+      10%  {                                                        opacity: 0.85; }
+      90%  {                                                        opacity: 0.6; }
+      100% { transform: translateY(-118vh) scale(1.15) rotate(25deg); opacity: 0; }
+    }
+
+    .lista-cita {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 340px;
+      text-align: left;
+    }
+    .lista-cita li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      padding: 0.55rem 0.85rem;
+      margin-bottom: 0.5rem;
+      background: rgba(255, 240, 246, 0.95);
+      border-radius: 14px;
+      font-size: 0.97rem;
+    }
